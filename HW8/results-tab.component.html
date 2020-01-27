@@ -1,0 +1,128 @@
+<div class="container">
+<ul class="nav nav-tabs " id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active"  style="color:black;"  id="current" data-toggle="tab" href="#currentTab" role="tab" aria-controls="currentTab" aria-selected="true">Current</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-decoration-none" (click)="prepareDataForChart()" style="color:black;"  id="hourly" data-toggle="tab" href="#hourlyTab" role="tab" aria-controls="hourlyTab" aria-selected="false">Hourly</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-decoration-none" (click)="prepareWeeklyData()" style="color:black;"  id="weekly" data-toggle="tab" href="#weeklyTab" role="tab" aria-controls="weeklyTab" aria-selected="false">Weekly</a>
+  </li>
+  <li class="col-sm-8"></li>
+  <li class="nav-pills">
+    <a href="{{requiredData}}" target="_blank"><img (click)="twitterData()" src="https://csci571.com/hw/hw8/Images/Twitter.png" width="45" height="45"></a>
+  </li>
+  <li class="starClass">
+   <button  (click)="selectedStar()" class="btn btn-light"> <i id="favoriteStar" class="material-icons notOn">star_border</i> </button>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <br><br>
+
+  <div class="container card text-black mb-3 border border-dark col-md-8 tab-pane fade show active" id="currentTab" role="tabpanel" aria-labelledby="current" style="max-width: 48rem;background-color:#93c9f1">
+      <div class="row" >
+        <div class="col-md-8" id="dataDiv">
+          <div class="card-text" >
+            <div class="card-body">
+              <h5 class="card-title h1" id="cityNameCard" style="font-weight:normal">{{cityNameReceived}}</h5>
+              <p class="card-text h1 tZ" id="timeZoneCard" style="font-weight:normal" >{{weatherDataReceived.timezone}}</p><br>
+              <p class="card-text h1" id="tempCard" style="font-weight:normal">{{getTemp()}}<sup><img id='tempdegreeF' height=15px width=15px src='https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png'></sup>F</p>
+              <br><br><p class="card-text h4" id="sumCard">{{weatherDataReceived.currently.summary}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="container col-md-4" id="sealDiv" ><br><br>
+          <img id='sealImg' src={{sealUrlDataReceived.items[0].link}}>
+        </div>
+      </div>
+
+      <div id='icons'>
+        <div class='eachIcon' *ngIf="weatherDataReceived.currently.humidity && weatherDataReceived.currently.humidity !=0" >
+          <img id ='first'  matTooltip="Humidity" matTooltipPosition="above" height='35px' width='35px' src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-16-512.png'><br>
+          <span style="margin-left:10px;">{{weatherDataReceived.currently.humidity}}</span></div>
+        <div class='eachIcon' *ngIf="weatherDataReceived.currently.pressure!=0"><img matTooltip="Pressure" matTooltipPosition="above"  height='35px' width='35px' src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-25-512.png'><br>
+          {{weatherDataReceived.currently.pressure}}</div>
+        <div class='eachIcon' *ngIf="weatherDataReceived.currently.windSpeed!=0"><img matTooltip="windSpeed" matTooltipPosition="above" height='35px' width='35px' src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-27-512.png'><br>
+          {{weatherDataReceived.currently.windSpeed}}</div>
+        <div class='eachIcon' *ngIf="weatherDataReceived.currently.visibility!=0"><img matTooltip="Visibility" matTooltipPosition="above"   height='35px' width='35px' src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-30-512.png'><br>
+          {{weatherDataReceived.currently.visibility}}</div>
+        <div class='eachIcon' *ngIf="weatherDataReceived.currently.cloudCover!=0"><img matTooltip="cloudCover"  matTooltipPosition="above"  height='35px' width='35px'  src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-28-512.png'><br>
+          {{weatherDataReceived.currently.cloudCover}}</div>
+        <div class='eachIcon' *ngIf="weatherDataReceived.currently.ozone!=0"><img matTooltip="Ozone" matTooltipPosition="above"  height='35px' width='35px'  src='https://cdn2.iconfinder.com/data/icons/weather-74/24/weather-24-512.png'><br>
+          {{weatherDataReceived.currently.ozone}}</div>
+      </div>
+  </div>
+
+  <div class="tab-pane fade" id="hourlyTab" role="tabpanel" aria-labelledby="hourly" >
+    <div *ngIf="chartReady">
+      <select id="selectTag" (change)="changeDataForChart($event)">
+        <option value="temperatureGraph">Temperature</option>
+        <option value="PressureGraph">Pressure</option>
+        <option value="HumidityGraph">Humidity</option>
+        <option value="OzoneGraph">Ozone</option>
+        <option value="VisibilityGraph">Visibility</option>
+        <option value="windSpeedGraph">Wind Speed</option>
+      </select>
+      <div class="container">
+        <div style="display: block">
+          <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType">
+          </canvas>
+        </div>
+      </div>
+      <div class="text-center">
+        Time difference from Current hour
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="weeklyTab" role="tabpanel" aria-labelledby="weekly">
+    <div id="weeklyTabData" class="container col-xs-11">
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" id="popUpForWeeklyData" class="btn btn-primary invisible" data-toggle="modal" data-target="#weeklyDisplayData" hidden>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="weeklyDisplayData" tabindex="-1" role="dialog" aria-labelledby="weeklyDataPopUpTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document" id="insideWeekly" >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="weeklyDataPopUpTitle">{{dateString}}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6" id="sumDataPop">
+                <h2 id='cityPop' style="font-weight:normal">{{cityNameReceived}}</h2>
+                 <p class="card-text h3" style="font-weight:normal">{{weeklyTemp}}<sup><img id="tempdegreeF"  height=15px width=15px src='https://cdn3.iconfinder.com/data/icons/virtual-notebook/16/button_shape_oval-512.png'></sup>F</p>
+                 <h6>{{summary}}</h6>
+              </div>
+              <div class="container col-md-6" id="imgData">
+                <img id="popImg" src={{iconString}}><br>
+              </div>
+            </div>
+            <hr>
+            <div class="row"><div class="col-md-6" id="dum1" ></div>
+              <div class="col-md-6" id="dum2">
+                <h6>Precipitation : {{precipitation}}</h6>
+                <h6>Chance Of Rain : {{chanceOfRain}} %</h6>
+                <h6>Wind Speed : {{windSpeed}} mph </h6>
+                <h6>Humidity : {{humidity}} %</h6>
+                <h6>Visibility : {{visibility}} miles</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

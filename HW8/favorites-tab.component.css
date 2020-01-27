@@ -1,0 +1,70 @@
+@media (min-width: 421px) {
+
+  .card {
+    background-color: #fff3cd;
+    color: #9d802e;
+  }
+
+  #dummy {
+    cursor: pointer;
+    color: blue;
+    text-decoration: none;
+  }
+
+  .table-striped > tbody > tr:nth-child(odd) > td,
+  .table-striped > tbody > tr:nth-child(odd) > th {
+    background-color: #a5d0ee;
+  }
+
+  .table-striped > tbody > tr:nth-child(even) > td,
+  .table-striped > tbody > tr:nth-child(even) > th {
+    background-color: #6491ac;
+  }
+
+  .mythead {
+    background-color: #6491ac;
+  }
+
+}
+
+@media (max-width:420px) {
+
+  #error{
+   height:10%;
+    width:92%;
+
+  }
+
+  #favTable {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card{
+    background-color: #fff3cd;
+    color: #9d802e;
+  }
+
+  #dummy{
+    cursor:pointer;
+    color:blue;
+    text-decoration:none;
+    font-size: 12px;
+  }
+
+  .table-striped>tbody>tr:nth-child(odd)>td,
+  .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #a5d0ee;
+  }
+
+  .table-striped>tbody>tr:nth-child(even)>td,
+  .table-striped>tbody>tr:nth-child(even)>th {
+    background-color: #6491ac;
+  }
+
+  .mythead {
+    background-color: #6491ac;
+  }
+
+}

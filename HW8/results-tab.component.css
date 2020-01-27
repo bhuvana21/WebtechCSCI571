@@ -1,0 +1,241 @@
+
+
+
+@media (max-width:420px) {
+  .nav-item, .starClass , .nav-pills{
+    margin-top:20px;
+    width:20%;
+    text-align: center;
+  }
+
+  .nav-pills{
+    margin-left: 5px;
+  }
+
+  .starClass{
+    margin-left:-15px;
+  }
+
+.col-sm-8{
+  display: none;
+}
+
+#current{
+  float:left;
+}
+
+  .nav-link {
+    padding: .5rem 0.2rem;
+  }
+
+  .eachIcon {
+    float: left;
+    width: 16.66%;
+    margin-bottom: 10px;
+    display: inline-block;
+    text-align: center;
+  }
+  /* Clearfix (clear floats) */
+
+  #sealImg{
+    height : 60%;
+    width : 100%;
+  }
+
+  #sealDiv{
+    width:40%;
+  }
+
+  #dataDiv{
+    width:60%;
+  }
+
+
+  #icons::after {
+    content: "";
+    clear: both;
+    display: table;
+    text-align: center;
+  }
+
+  #icons {
+    margin-top: 30px;
+  }
+
+  .tooltip{
+    backgroun-color:black;
+  }
+
+  .modal-header{
+    background-color: #6592ad;
+  }
+
+  .modal-body{
+    background-color: #9cd1f1;
+  }
+
+  .btn-light{
+    background-color: transparent;
+    border-color:white;
+    width:45px;
+    height:45px;
+  }
+  .notOn{
+
+  }
+  .On
+  {
+    color:#d99c06;
+  }
+
+  .tZ {
+    color:#2f4f4f;
+  }
+
+  #cityNameCard{
+    margin-top:10px;
+    font-size:22px;
+    margin-left:-19px;
+  }
+  #tempCard{
+    font-size:24px;
+    margin-left:-19px;
+
+  }
+
+  #timeZoneCard{
+    font-size:14px;
+    margin-left:-19px;
+  }
+
+  #tempdegreeF{
+    width: 5%;
+    height:5%;
+  }
+
+  #sumCard{
+    font-size:18px;
+    margin-left:-19px;
+    margin-top:-40px;
+  }
+
+  #selectTag{
+    margin-bottom: -20px;
+  }
+
+  #selectTag br{
+    display: none;
+  }
+ #weeklyTab{
+   width:100%;
+ }
+
+  #hourlyTab{
+    margin-bottom: 20px;
+  }
+  #weeklyDisplayData{
+
+  }
+  #insideWeekly{
+    width:95%;
+    height:50%;
+    margin-right: auto;
+    margin-left: auto;
+
+  }
+
+  #cityPop{
+    font-size:19px;
+  }
+
+  .row{
+    width:100%;
+  }
+
+  #sumDataPop{
+    width:65%;
+    font-size: 15px;
+  }
+
+  #imgData{
+    width:35%;
+  }
+
+  #dum1{
+
+  }
+
+  #dum2{
+
+  }
+  #popImg{
+    width:100%;
+    height:100%;
+  }
+
+}
+
+@media (min-width:421px){
+  .eachIcon {
+    float: left;
+    width: 16.66%;
+    margin-bottom: 10px;
+    display: inline-block;
+    text-align: center;
+  }
+  /* Clearfix (clear floats) */
+
+  #sealImg{
+    height:67%;
+    width:87%;
+  }
+
+  #popImg{
+    height:65%;
+    width:40%;
+  }
+
+
+  #icons::after {
+    content: "";
+    clear: both;
+    display: table;
+    text-align: center;
+  }
+
+  #icons {
+    margin-top: 30px;
+  }
+
+  .tooltip{
+    backgroun-color:black;
+  }
+
+  .modal-header{
+    background-color: #6592ad;
+  }
+
+  .modal-body{
+    background-color: #9cd1f1;
+  }
+
+  .btn-light{
+    background-color: transparent;
+    border-color:white;
+    width:45px;
+    height:45px;
+  }
+  .notOn{
+
+  }
+  .On
+  {
+    color:#d99c06;
+  }
+
+  .tZ {
+    color:#2f4f4f;
+  }
+}
+
+

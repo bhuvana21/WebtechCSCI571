@@ -1,0 +1,60 @@
+<br><br>
+<div *ngIf="arrayOfFav.length === 0">
+  <div class="container card" id="error">
+    <div class="card-body" >
+      No Records.
+    </div>
+  </div>
+</div>
+
+<div *ngIf="arrayOfFav.length !==0">
+  <div class="container">
+    <table class="table table-striped" id="favTable">
+      <thead class="mythead">
+        <tr>
+          <th class="text-center" scope="col">#
+          </th>
+          <th class="text-center" scope="col">Image
+          </th>
+          <th class="text-center" scope="col" >City
+          </th>
+          <th class="text-center" scope="col">State
+          </th>
+          <th class="text-center" scope="col">Favorites
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr class="text-center" *ngFor="let cityObj of arrayOfFav; let ind = index">
+          <th scope="row">{{ind + 1}}
+          </th>
+          <td>
+            <img src={{cityObj.sealImgPath}} height="35" width="35">
+          </td>
+          <td>
+            <div id="dummy">
+              <a (click)="showResults(cityObj.cityName, cityObj.stateName)">
+                {{cityObj.cityName}}
+              </a>
+            </div>
+          </td>
+          <td>
+            <div>
+              {{cityObj.stateName}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <button type="button" (click)="removeSavedCity(cityObj.cityName)" class="btn btn-light">
+                <i class="material-icons">delete</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
