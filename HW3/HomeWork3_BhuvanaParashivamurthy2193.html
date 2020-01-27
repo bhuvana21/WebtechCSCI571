@@ -1,0 +1,315 @@
+<!Doctype html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=DM Sans' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,500i&display=swap" rel="stylesheet">
+    <style>
+        html {
+            height: 100%;
+        }
+        
+        body {
+            margin: auto;
+            height: 100%;
+            max-width: 760px;
+        }
+        
+        .topnav h1 {
+            margin: 0 auto;
+        }
+        
+        .topnav {
+            background-color: white;
+            width: 760px;
+            margin: 0 auto;
+            z-index: 999;
+            position: fixed;
+            height: 52px;
+            font-family: 'DM Sans';
+        }
+        
+        .topnav a {
+            color: darkgrey;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-align: center;
+            padding: 14px 0px 16px 20px;
+            display: table-cell;
+        }
+        
+        .topnav a.active {
+            color: #48277B;
+            padding-top: 17px;
+            font-size: 11px;
+            font-family: 'DM Sans';
+        }
+        
+        .topnav a.links {
+            color: darkgrey;
+            padding-top: 17px;
+            font-size: 11px;
+            font-family: 'DM Sans';
+        }
+        
+        .backgroundImage1 {
+            background-image: url('http://csci571.com/hw/hw3/images/coffee2.jpg ');
+            height: 565px;
+        }
+        
+        .backgroundImage2 {
+            background-image: url('http://csci571.com/hw/hw3/images/coffee1.jpg ');
+            height: 770px;
+        }
+        
+        .backgroundImage1,
+        .backgroundImage2 {
+            background-size: auto 760px;
+            background-attachment: fixed;
+            max-width: 760px;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        #port {
+            float: right;
+            font-family: serif;
+            color: #48277B;
+            padding-right: 27px;
+        }
+        
+        #face {
+            height: 160px;
+            width: 140px;
+            object-fit: cover;
+            padding-top: 40px;
+            padding-left: 20px;
+            padding-bottom: 40px;
+        }
+        
+        #imageOuter {
+            max-height: 220px;
+            width: 370px;
+            overflow: hidden;
+        }
+        
+        .intro {
+            background-color: white;
+            z-index: 1;
+            width: 370px;
+            height: 240px;
+            position: absolute;
+            top: 145px;
+            margin-top: 65px;
+            margin-left: 195px;
+        }
+        
+        .partitionDiv {
+            top: 565px;
+            float: left;
+            z-index: 109;
+            position: absolute;
+            margin: auto;
+            width: 760px;
+            display: table;
+            height: 435px;
+        }
+        
+        .child {
+            width: 33.33%;
+            height: 435px;
+            float: left;
+            display: inline-block;
+            /*            border: 1px solid black;*/
+        }
+        
+        .child p {
+            padding-top: 171px;
+            text-align: center;
+            color: white;
+            padding-right: 95px;
+        }
+        
+        #first {
+            background-color: #4F98B9;
+        }
+        
+        #second {
+            background-color: #48277B;
+        }
+        
+        #third {
+            background-color: #9969C2;
+        }
+        
+        .textDiv {
+            background: #48277B;
+            float: left;
+            height: 390px;
+            margin: auto;
+            color: white;
+            width: 760px;
+        }
+        
+        #textPara {
+            font-size: 27px;
+            font-weight: lighter;
+            /*            text-align: center;*/
+            font-family: Raleway;
+            float: left;
+            padding-left: 110px;
+        }
+        
+        #hello {
+            padding-top: 88px;
+            font-family: Raleway;
+            padding-left: 104px;
+            font-weight: 700;
+        }
+        
+        .Form {
+            height: 290px;
+            display: table-cell;
+            padding-left: 59px;
+        }
+        
+        .submit {
+            background-color: #48277B;
+            color: white;
+            float: right;
+            margin: auto;
+            width: 60px;
+            height: 30px;
+            font-family: 'Times New Roman';
+            text-align: center;
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        .TextInfo {
+            height: 297px;
+            padding-top: 30px;
+            background-color: white;
+            color: #48277B;
+            display: table-cell;
+            font-family: Raleway;
+            font-size: 14px;
+            padding-left: 45px;
+            padding-right: 20px;
+        }
+        
+        input[type=text] {
+            width: 300px;
+            height: 18px;
+            margin: auto;
+            margin: 0 0 3px 0;
+            border: 1px solid #48277B;
+            font-family: Raleway;
+            font-size: 10px;
+        }
+        
+        input::placeholder {
+            color: #48277B;
+            opacity: 1;
+            text-align: inherit;
+        }
+        
+        textarea::placeholder {
+            color: #48277B;
+            opacity: 1;
+            padding-top: 10px;
+        }
+        
+        textarea {
+            resize: none;
+            border: 1px solid #48277B;
+            width: 300px;
+            height: 72px;
+            font-family: Raleway;
+            font-size: 10px;
+        }
+        
+        #copywright {
+            padding-top: 50px;
+        }
+        
+        #firstText,
+        #secondText,
+        #thirdText {
+            font-family: Ubuntu;
+        }
+        
+        .contactInfo {
+            position: absolute;
+            display: table-row;
+            max-width: 760px;
+            padding-top: 420px;
+            width: 760px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topnav"> <span style="float:left;padding-top: 17px;padding-left:105px; font-style: italic;font-family:serif;color:#48277B;font-size:15px;font-weight:100;">Migi Bell </span> <a class="active" href="#home"><span style="padding-left:205px;  ">HOME</span></a> <a class="links" href="#news">PORTFOLIO</a> <a class="links" href="#contact">ABOUT ME</a> <a class="links" href="#about">CONTACT ME</a> </div>
+    <div class="backgroundImage1"></div>
+    <div class="intro">
+        <div id="imageOuter"> <img id="face" src="http://csci571.com/hw/hw3/images/face.jpg" />
+            <div id="port">
+                <br>
+                <br><span style="font-style: italic;font-size:11px; ">Migi Bell</span>
+                <br> <span style="font-size: 28px; font-family: Helvetica;font-weight:300; "> FOOD</span>
+                <br><span style="font-size: 38px;font-family:Geneva;font-weight:555;line-height: 32px; "> STYLIST.</span>
+                <br>
+                <br>
+                <hr style="height:3px;background-color:#48277B;width:57px;border:none;float:left;">
+                <br> <span style="font-size: 15px;font-family: 'DM Sans';line-height: 75px;float:left;padding-right:30px;">  PORTFOLIO > </span> </div>
+        </div>
+    </div>
+    <div class="backgroundImage2 "> </div>
+    <div class="partitionDiv">
+        <div class="child" id="first">
+            <p id="firstText"> <span style="font-size: 9px; padding-right: 49px; padding-top:150px;">PROJECTS</span>
+                <br><span style="font-weight:700;line-height:30px;font-size:17px;">PROJECTS ></span> </p>
+        </div>
+        <div class="child" id="second">
+            <p id="secondText"> <span style="font-size: 9px; padding-right: 55px;">PROJECTS</span>
+                <br> <span style="font-weight:700;line-height:30px;font-size:17px;">EDITORIAL > </span></p>
+        </div>
+        <div class="child" id="third">
+            <p id="thirdText"><span style="font-size: 9px; padding-right: 69px;">PROJECTS</span>
+                <br><span style="font-weight:700;line-height:30px;font-size:17px;"> INNOVATIVE ></span></p>
+        </div>
+    </div>
+    <div class="textDiv">
+        <h6 id="hello">- Hello -</h6>
+        <div id="textPara"> Lorem ipsum dolor sit amet, consectetur
+            <br> adipiscing elit, sed do eiusmod tempor
+            <br> incididunt ut labore et dolore magna aliqua.
+            <br> </div>
+    </div>
+    <div class="contactInfo">
+        <div class="TextInfo">
+            <h6><span style="float:left;">- Get In Touch - </span> </h6>
+            <br><span style="font-size:27px;line-height: 40px;padding-left: 5px;">Contact Me</span>
+            <br><span style="font-size:10px;padding-left: 5px;">700 morey francois street san francisco CA 94148</span>
+            <br><span style="font-size:10px;padding-left: 5px;">info@lorem.com | Tel: 123-555-1212</span>
+            <p id="copywright"><span style="font-size:9px;"> &copy; 2023 By Migi Bell.</span></p>
+        </div>
+        <div class="Form">
+            <form>
+                <input type="text" name="fname" placeholder="   Name">
+                <br>
+                <input type="text" name="lname" placeholder="   Email">
+                <br>
+                <input type="text" name="lname" placeholder="   Phone">
+                <br>
+                <textarea name="lname" placeholder="   Type your message here..."></textarea>
+                <br>
+                <input class="submit" type="submit" value="Submit"> </form>
+        </div>
+    </div>
+</body>
+
+</html>

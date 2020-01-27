@@ -1,0 +1,128 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        form {
+            text-align: center;
+            margin-top: 150px;
+            line-height: 35px;
+        }
+        
+        #submit {
+            background-color: #e7e7e7;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function parseJson(formObj) {
+            var fileToBeParsed = formObj.fileName.value;
+            console.log(fileToBeParsed);
+            if (fileToBeParsed == null || fileToBeParsed == '') {
+                window.alert("Filename cannot be blank!");
+                return;
+            }
+            var requestMade = new XMLHttpRequest();
+            console.log(fileToBeParsed);
+            requestMade.open("GET", fileToBeParsed, false);
+            try {
+                requestMade.send(null);
+            }
+            catch (error) {
+                window.alert("The File does not exist!");
+                return;
+            }
+            console.log(requestMade.status);
+            try {
+                jsonObj = JSON.parse(requestMade.responseText);
+            }
+            catch (error) {
+                window.alert("JSON formatting error!");
+                return;
+            }
+            if (generateHTML(jsonObj) == false) {
+                return;
+            }
+            jsonObj.onload = generateHTML(jsonObj);
+            popUpWindow = window.open("", "Assignment4", "height=900,width=1250");
+            popUpWindow.document.write(html_text);
+            popUpWindow.document.close();
+        }
+
+        function generateHTML(jsonObj) {
+            root = jsonObj.DocumentElement;
+            html_text = "<html><head><title>JSON Parse Result</title></head><body>";
+            html_text += "<table border='2'>";
+            headerValues = jsonObj.Mainline.Table.Header.Data;
+            carList = jsonObj.Mainline.Table.Row;
+            html_text += "<tbody>";
+            html_text += "<tr>";
+            // output the headers
+            for (i = 0; i < headerValues.length; i++) {
+                html_text += "<th>" + headerValues[i] + "</th>";
+            }
+            html_text += "</tr>";
+            if (carList == null) {
+                window.alert("The data is empty!");
+                return false;
+            }
+            for (i = 0; i < carList.length; i++) {
+                each = carList[i];
+                html_text += "<tr>";
+                var eachRowKeys = Object.keys(each);
+                for (j = 0; j < eachRowKeys.length; j++) {
+                    var eachKey = eachRowKeys[j];
+                    if (each[eachKey] == null || each[eachKey].length == 0) {
+                        html_text += "<td height=\"225px\"></td>";
+                        continue;
+                    }
+                    if (eachKey == 'Rank' || eachKey == 'Group' || eachKey == 'Vehicles') {
+                        html_text += "<td>" + each[eachKey] + "</td>";
+                    }
+                    else if (eachKey == 'HomePage') {
+                        html_text += "<td><a href=" + each[eachKey] + ">" + each[eachKey] + "</a></td>";
+                    }
+                    else if (eachKey == 'Hubs') {
+                        mainObj = ((each[eachKey])['Hub']);
+                        if (mainObj.length == 0) {
+                            html_text += "<td></td>";
+                            continue;
+                        }
+                        var flag = true;
+                        for (k = 0; k < mainObj.length; k++) {
+                            if (mainObj[k] == null || mainObj[k].length == 0) {
+                                continue;
+                            }
+                            if (flag) {
+                                html_text += "<td><ul><li><b>" + mainObj[k] + "</b></li>";
+                                flag = false;
+                            }
+                            else {
+                                html_text += "<li>" + mainObj[k] + "</li>";
+                            }
+                        }
+                        html_text += "</ul></td>"
+                    }
+                    else if (eachKey == 'Logo') {
+                        html_text += "<td><img src=" + each[eachKey] + ' height= "225px" width="225px" /></td>';
+                    }
+                }
+                html_text += "</tr>";
+            }
+            html_text += "</tbody>";
+            html_text += "</table>";
+            html_text += "</bo" + "dy></html>";
+        }
+    </script>
+</head>
+
+<body>
+    <form name="myform" method="POST">
+        <h3> Enter URL for the largest manufactures by production(2017) List Json File</h3>
+        <input type="text" name="fileName" maxlength="255 " size="22" />
+        <br />
+        <input type="button" name="submit" value="Submit Query" onClick="parseJson(this.form)" /> </form>
+</body>
+
+</html>
