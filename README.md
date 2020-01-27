@@ -1,9 +1,3 @@
-Core technologies included:
-HTML and CSS (Hypertext MarkUp Language and Cascading Style Sheets) HTTP (HyperText Transfer Protocol) and HTTP/2 Web servers, their configuration and performance properties Client-side Programming Using JavaScript Ajax (Asynchronous JavaScript & XML) and JSON (JavaScript Object Notation) Server-side Programming Using PHP and JavaScript on Node.js
-
-In addition the course also covered the following subsidiary topics:
-Web Services (REST) Web Security and Privacy tools Web Technologies for Mobile Phones (Android and iOS) Responsive Website Design Cloud Computing (Amazon Web Services, Google Cloud Platform and Azure) AngularJS and Nodes.js Serverless Applications AWS Lambda, Google Functions and Azure Functions
-
 Homework - 3 We were required to reproduce the provided static web page as closely as possible. We were not allowed to use any frameworks and required us to do it with just HTML and CSS.
 
 Homework - 4 This homework consisted of writing a HTML/Javascript program that takes a JSON URL as input which contains Car dealer Information, the program then parses the JSON file and extracts the required information, and displays them in a formatted table. All of the parsing and formatting is done with the help of Javascript.Various error cases that can be present in a JSON are also handled.
